@@ -1,0 +1,246 @@
+[
+    {
+        "keys": [
+            "ctrl+alt+i"
+        ], 
+        "command": "increment", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "key": "selection_empty"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "ctrl+backspace"
+        ], 
+        "args": {
+            "direction": "left"
+        }, 
+        "command": "delete_whitespace", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": true, 
+                "match_all": true, 
+                "key": "selection_empty"
+            }, 
+            {
+                "operator": "regex_contains", 
+                "operand": "(^|\\s)$", 
+                "match_all": true, 
+                "key": "preceding_text"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "ctrl+delete"
+        ], 
+        "args": {
+            "direction": "right"
+        }, 
+        "command": "delete_whitespace", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": true, 
+                "match_all": true, 
+                "key": "selection_empty"
+            }, 
+            {
+                "operator": "regex_contains", 
+                "operand": "^(\\s|$)", 
+                "match_all": true, 
+                "key": "following_text"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "enter"
+        ], 
+        "args": {
+            "contents": "\n\t${0:$SELECTION}\n"
+        }, 
+        "command": "insert_snippet", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": true, 
+                "match_all": true, 
+                "key": "in_brackets"
+            }, 
+            {
+                "operator": "regex_contains", 
+                "operand": "\\S$", 
+                "match_all": true, 
+                "key": "preceding_text"
+            }, 
+            {
+                "operator": "regex_contains", 
+                "operand": "^\\S", 
+                "match_all": true, 
+                "key": "following_text"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            " "
+        ], 
+        "args": {
+            "contents": " ${0:$SELECTION} "
+        }, 
+        "command": "insert_snippet", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": true, 
+                "match_all": true, 
+                "key": "in_brackets"
+            }, 
+            {
+                "operator": "regex_contains", 
+                "operand": "\\S$", 
+                "match_all": true, 
+                "key": "preceding_text"
+            }, 
+            {
+                "operator": "regex_contains", 
+                "operand": "^\\S", 
+                "match_all": true, 
+                "key": "following_text"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "backspace"
+        ], 
+        "args": {
+            "file": "res://Packages/Default/Delete Left Right.sublime-macro"
+        }, 
+        "command": "run_macro_file", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": true, 
+                "match_all": true, 
+                "key": "in_brackets"
+            }, 
+            {
+                "operator": "regex_contains", 
+                "operand": "\\S", 
+                "match_all": true, 
+                "key": "preceding_text"
+            }, 
+            {
+                "operator": "regex_contains", 
+                "operand": "^", 
+                "match_all": true, 
+                "key": "following_text"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "ctrl+backspace"
+        ], 
+        "args": {
+            "direction": "both"
+        }, 
+        "command": "delete_whitespace", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": true, 
+                "match_all": true, 
+                "key": "in_brackets"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "ctrl+left"
+        ], 
+        "args": {
+            "commands": [
+                [
+                    "move", 
+                    {
+                        "forward": false, 
+                        "by": "stops", 
+                        "word_end": true
+                    }
+                ], 
+                [
+                    "expand_selection", 
+                    {
+                        "to": "word"
+                    }
+                ]
+            ]
+        }, 
+        "command": "chain", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "key": "selection_empty"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "ctrl+right"
+        ], 
+        "args": {
+            "commands": [
+                [
+                    "move", 
+                    {
+                        "forward": true, 
+                        "by": "stops", 
+                        "word_begin": true
+                    }
+                ], 
+                [
+                    "expand_selection", 
+                    {
+                        "to": "word"
+                    }
+                ]
+            ]
+        }, 
+        "command": "chain", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "key": "selection_empty"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "ctrl+shift+k"
+        ], 
+        "command": "transform_words", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "key": "selection_empty"
+            }
+        ]
+    }, 
+    {
+        "keys": [
+            "ctrl+f7"
+        ], 
+        "command": "better_expand_selection_to_scope"
+    }
+]

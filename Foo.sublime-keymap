@@ -1,0 +1,73 @@
+[
+    {
+        "keys": [
+            "ctrl+f6"
+        ], 
+        "args": {
+            "contents": "Hello, World!"
+        }, 
+        "command": "insert_snippet"
+    }, 
+    {
+        "keys": [
+            "ctrl+f6"
+        ], 
+        "args": {
+            "contents": "Hello, World!"
+        }, 
+        "command": "insert_snippet"
+    }, 
+    {
+        "keys": [
+            "ctrl+f6"
+        ], 
+        "args": {
+            "commands": [
+                [
+                    "insert_snippet", 
+                    {
+                        "contents": "Hello, World!"
+                    }
+                ], 
+                [
+                    "insert_snippet", 
+                    {
+                        "contents": "Goodbye, World!"
+                    }
+                ]
+            ]
+        }, 
+        "command": "chain"
+    }, 
+    {
+        "keys": [
+            "ctrl+alt+i"
+        ], 
+        "command": "increment", 
+        "context": [
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "key": "selection_empty"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": "wat", 
+                "match_all": true, 
+                "key": "selection_empty"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": "wwaa't", 
+                "match_all": true, 
+                "key": "selection_empty"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": "foo*", 
+                "match_all": true, 
+                "key": "selection_empty"
+            }
+        ]
+    }
+]

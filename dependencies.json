@@ -1,0 +1,9 @@
+{
+    "*": {
+        "*": [
+            "sublime_lib",
+            "ruamel-yaml",
+            "pathlib"
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "caption": "ThomsText: Convert keymap to easy keymap.",
+    "command": "create_easy_keymap"
+  },
+  {
+    "caption": "ThomsText: Convert easy keymap to keymap.",
+    "command": "compile_keymap"
+  },
+]

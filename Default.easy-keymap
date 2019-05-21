@@ -1,0 +1,84 @@
+- keys: ctrl+alt+i
+  command: increment
+  context:
+    - selection_empty equal false
+
+- keys: ctrl+backspace
+  command:
+    delete_whitespace:
+      direction: left
+  context:
+    - all selection_empty equal true
+    - all preceding_text regex_contains (^|\s)$
+
+- keys: ctrl+delete
+  command:
+    delete_whitespace:
+      direction: right
+  context:
+    - all selection_empty equal true
+    - all following_text regex_contains ^(\s|$)
+
+- keys: enter
+  command:
+    insert_snippet:
+      contents: "\n\t${0:$SELECTION}\n"
+  context:
+    - all in_brackets equal true
+    - all preceding_text regex_contains \S$
+    - all following_text regex_contains ^\S
+
+- keys: ' '
+  command:
+    insert_snippet:
+      contents: ' ${0:$SELECTION} '
+  context:
+    - all in_brackets equal true
+    - all preceding_text regex_contains \S$
+    - all following_text regex_contains ^\S
+
+- keys: backspace
+  command:
+    run_macro_file:
+      file: res://Packages/Default/Delete Left Right.sublime-macro
+  context:
+    - all in_brackets equal true
+    - all preceding_text regex_contains \S
+    - all following_text regex_contains ^
+
+- keys: ctrl+backspace
+  command:
+    delete_whitespace:
+      direction: both
+  context:
+    - all in_brackets equal true
+
+- keys: ctrl+left
+  command:
+    - move:
+        forward: false
+        by: stops
+        word_end: true
+    - expand_selection:
+        to: word
+  context:
+    - selection_empty equal false
+
+- keys: ctrl+right
+  command:
+    - move:
+        forward: true
+        by: stops
+        word_begin: true
+    - expand_selection:
+        to: word
+  context:
+    - selection_empty equal false
+
+- keys: ctrl+shift+k
+  command: transform_words
+  context:
+    - selection_empty equal false
+
+- keys: ctrl+f7
+  command: better_expand_selection_to_scope
