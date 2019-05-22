@@ -1,0 +1,22 @@
+{
+    "variables":
+    {
+        "blue5": "hsl(180, 60%, 55%)",
+        "red": "hsl(357, 88%, 65%)",
+        "orange": "hsl(32, 95%, 66%)",
+        "green": "hsl(114, 35%, 68%)",
+        "blue": "hsl(210, 60%, 62%)",
+        "pink": "hsl(300, 45%, 68%)",
+    },
+    "globals": {
+        "active_guide": "color(var(blue) alpha(0.5))",
+        "stack_guide": "color(var(blue) alpha(0.5))",
+    },
+    "rules": [
+        {
+            "name": "JavaScript unquoted object literal key",
+            "scope": "meta.object-literal.key, meta.object-literal.key string - punctuation, meta.mapping.key string - punctuation",
+            "foreground": "var(blue5)"
+        },
+    ]
+}

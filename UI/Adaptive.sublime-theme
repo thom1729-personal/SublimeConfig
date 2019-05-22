@@ -1,0 +1,46 @@
+[
+    {
+        "class": "sidebar_heading",
+        "font.face": "Roboto",
+    },
+    {
+        "class": "sidebar_label",
+        "fg": ["background", 255, 255, 255, 0.7],
+        "font.size": 13,
+        "font.face": "Roboto"
+    },
+    {
+        "class": "sidebar_label",
+        "parents": [{"class": "tree_row", "attributes": ["expandable"]}],
+        "font.face": "Roboto Medium",
+    },    
+    {
+        "class": "icon_file_type",
+        "layer0.opacity": 0.55,
+    },
+    
+    {
+        "class": "tab_label",
+        "font.face": "Roboto",
+    },
+
+    {
+        "class": "quick_panel_label",
+        "parents": [{"class": "mini_quick_panel_row"}],
+        "font.face": "Roboto",
+        "font.size": 14
+    },
+    {
+        "class": "label_control",
+        "font.face": "Roboto Medium",
+    },
+    {
+        "class": "tool_tip_label_control",
+        "font.face": "Roboto",
+    },
+    {
+        "class": "label_control",
+        "parents": [{"class": "status_bar"}],
+        "font.face": "Roboto Condensed",
+    },
+]
