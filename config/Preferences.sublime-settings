@@ -1,0 +1,29 @@
+{
+    "font_face": "Roboto Mono",
+    "font_size": 11,
+    "highlight_line": true,
+    "highlight_modified_tabs": true,
+    "indent_guide_options":
+    [
+        "draw_normal",
+        "draw_active",
+    ],
+    "show_full_path": true,
+
+    "default_line_ending": "unix",
+    "ensure_newline_at_eof_on_save": true,
+    "translate_tabs_to_spaces": true,
+
+    "auto_complete": true,
+    "auto_complete_commit_on_tab": true,
+    "auto_complete_triggers": [
+        {
+            "characters": ".",
+            "selector": "source - comment",
+        }
+    ],
+
+    "close_windows_when_empty": false,
+    "find_selected_text": true,
+    "scroll_past_end": true,
+}

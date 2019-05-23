@@ -1,6 +1,12 @@
 [
     {
         "keys": [
+            "primary+q"
+        ], 
+        "command": "exit"
+    }, 
+    {
+        "keys": [
             "primary+shift+o"
         ], 
         "command": "prompt_open_folder"

@@ -1,3 +1,6 @@
+- keys: primary+q
+  command: exit
+
 # File management
 
 - keys: primary+shift+o
