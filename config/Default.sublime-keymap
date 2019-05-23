@@ -1,274 +1,260 @@
 [
     {
-        "command": "prompt_open_folder", 
         "keys": [
             "primary+shift+o"
-        ]
+        ], 
+        "command": "prompt_open_folder"
     }, 
     {
+        "keys": [
+            "super+shift+e"
+        ], 
         "command": "open_dir", 
         "args": {
             "dir": "$file_path", 
             "file": "$file_name"
-        }, 
-        "keys": [
-            "super+shift+e"
-        ]
+        }
     }, 
     {
-        "command": "reveal_in_sidebar", 
         "keys": [
             "alt+shift+e"
-        ]
+        ], 
+        "command": "reveal_in_sidebar"
     }, 
     {
-        "command": "refresh_folder_list", 
         "keys": [
             "f5"
-        ]
+        ], 
+        "command": "chain", 
+        "args": {
+            "commands": [
+                [
+                    "status_message", 
+                    {
+                        "message": "Refreshing folders."
+                    }
+                ], 
+                [
+                    "refresh_folder_list", 
+                    null
+                ]
+            ]
+        }
     }, 
     {
-        "command": "clone_file", 
         "keys": [
             "ctrl+m"
-        ]
+        ], 
+        "command": "clone_file"
     }, 
     {
-        "command": "prev_view", 
         "keys": [
             "ctrl+pageup"
-        ]
+        ], 
+        "command": "prev_view"
     }, 
     {
-        "command": "next_view", 
         "keys": [
             "ctrl+pagedown"
-        ]
+        ], 
+        "command": "next_view"
     }, 
     {
-        "command": "auto_complete", 
         "keys": [
             "ctrl+space"
-        ]
+        ], 
+        "command": "auto_complete"
     }, 
     {
-        "command": "paste_and_indent", 
         "keys": [
             "primary+v"
-        ]
+        ], 
+        "command": "paste_and_indent"
     }, 
     {
-        "command": "paste", 
         "keys": [
             "primary+alt+v"
-        ]
+        ], 
+        "command": "paste"
     }, 
     {
-        "command": "paste_from_history", 
         "keys": [
             "primary+shift+v"
-        ]
+        ], 
+        "command": "paste_from_history"
     }, 
     {
-        "context": [
-            {
-                "key": "selection_empty", 
-                "operand": false, 
-                "operator": "equal"
-            }
-        ], 
-        "command": "increment", 
         "keys": [
             "ctrl+alt+i"
-        ]
-    }, 
-    {
+        ], 
         "context": [
             {
+                "operator": "equal", 
                 "key": "selection_empty", 
+                "operand": false
+            }
+        ], 
+        "command": "increment"
+    }, 
+    {
+        "keys": [
+            "ctrl+backspace"
+        ], 
+        "context": [
+            {
                 "match_all": true, 
-                "operand": true, 
-                "operator": "equal"
+                "operator": "equal", 
+                "key": "selection_empty", 
+                "operand": true
             }, 
             {
-                "key": "preceding_text", 
                 "match_all": true, 
-                "operand": "(^|\\s)$", 
-                "operator": "regex_contains"
+                "operator": "regex_contains", 
+                "key": "preceding_text", 
+                "operand": "(^|\\s)$"
             }
         ], 
         "command": "delete_whitespace", 
         "args": {
             "direction": "left"
-        }, 
-        "keys": [
-            "ctrl+backspace"
-        ]
+        }
     }, 
     {
+        "keys": [
+            "ctrl+delete"
+        ], 
         "context": [
             {
-                "key": "selection_empty", 
                 "match_all": true, 
-                "operand": true, 
-                "operator": "equal"
+                "operator": "equal", 
+                "key": "selection_empty", 
+                "operand": true
             }, 
             {
-                "key": "following_text", 
                 "match_all": true, 
-                "operand": "^(\\s|$)", 
-                "operator": "regex_contains"
+                "operator": "regex_contains", 
+                "key": "following_text", 
+                "operand": "^(\\s|$)"
             }
         ], 
         "command": "delete_whitespace", 
         "args": {
             "direction": "right"
-        }, 
-        "keys": [
-            "ctrl+delete"
-        ]
+        }
     }, 
     {
+        "keys": [
+            "enter"
+        ], 
         "context": [
             {
+                "match_all": true, 
+                "operator": "equal", 
                 "key": "in_brackets", 
-                "match_all": true, 
-                "operand": true, 
-                "operator": "equal"
+                "operand": true
             }, 
             {
+                "match_all": true, 
+                "operator": "regex_contains", 
                 "key": "preceding_text", 
-                "match_all": true, 
-                "operand": "\\S$", 
-                "operator": "regex_contains"
+                "operand": "\\S$"
             }, 
             {
-                "key": "following_text", 
                 "match_all": true, 
-                "operand": "^\\S", 
-                "operator": "regex_contains"
+                "operator": "regex_contains", 
+                "key": "following_text", 
+                "operand": "^\\S"
             }
         ], 
         "command": "insert_snippet", 
         "args": {
             "contents": "\n\t${0:$SELECTION}\n"
-        }, 
-        "keys": [
-            "enter"
-        ]
+        }
     }, 
     {
+        "keys": [
+            " "
+        ], 
         "context": [
             {
+                "match_all": true, 
+                "operator": "equal", 
                 "key": "in_brackets", 
-                "match_all": true, 
-                "operand": true, 
-                "operator": "equal"
+                "operand": true
             }, 
             {
+                "match_all": true, 
+                "operator": "regex_contains", 
                 "key": "preceding_text", 
-                "match_all": true, 
-                "operand": "\\S$", 
-                "operator": "regex_contains"
+                "operand": "\\S$"
             }, 
             {
-                "key": "following_text", 
                 "match_all": true, 
-                "operand": "^\\S", 
-                "operator": "regex_contains"
+                "operator": "regex_contains", 
+                "key": "following_text", 
+                "operand": "^\\S"
             }
         ], 
         "command": "insert_snippet", 
         "args": {
             "contents": " ${0:$SELECTION} "
-        }, 
-        "keys": [
-            " "
-        ]
+        }
     }, 
     {
+        "keys": [
+            "backspace"
+        ], 
         "context": [
             {
+                "match_all": true, 
+                "operator": "equal", 
                 "key": "in_brackets", 
-                "match_all": true, 
-                "operand": true, 
-                "operator": "equal"
+                "operand": true
             }, 
             {
+                "match_all": true, 
+                "operator": "regex_contains", 
                 "key": "preceding_text", 
-                "match_all": true, 
-                "operand": "\\S", 
-                "operator": "regex_contains"
+                "operand": "\\S"
             }, 
             {
-                "key": "following_text", 
                 "match_all": true, 
-                "operand": "^", 
-                "operator": "regex_contains"
+                "operator": "regex_contains", 
+                "key": "following_text", 
+                "operand": "^"
             }
         ], 
         "command": "run_macro_file", 
         "args": {
             "file": "res://Packages/Default/Delete Left Right.sublime-macro"
-        }, 
-        "keys": [
-            "backspace"
-        ]
+        }
     }, 
     {
+        "keys": [
+            "ctrl+backspace"
+        ], 
         "context": [
             {
-                "key": "in_brackets", 
                 "match_all": true, 
-                "operand": true, 
-                "operator": "equal"
+                "operator": "equal", 
+                "key": "in_brackets", 
+                "operand": true
             }
         ], 
         "command": "delete_whitespace", 
         "args": {
             "direction": "both"
-        }, 
-        "keys": [
-            "ctrl+backspace"
-        ]
+        }
     }, 
     {
-        "context": [
-            {
-                "key": "selection_empty", 
-                "operand": false, 
-                "operator": "equal"
-            }
-        ], 
-        "command": "chain", 
-        "args": {
-            "commands": [
-                [
-                    "move", 
-                    {
-                        "word_end": true, 
-                        "by": "stops", 
-                        "forward": false
-                    }
-                ], 
-                [
-                    "expand_selection", 
-                    {
-                        "to": "word"
-                    }
-                ]
-            ]
-        }, 
         "keys": [
             "ctrl+left"
-        ]
-    }, 
-    {
+        ], 
         "context": [
             {
+                "operator": "equal", 
                 "key": "selection_empty", 
-                "operand": false, 
-                "operator": "equal"
+                "operand": false
             }
         ], 
         "command": "chain", 
@@ -277,9 +263,9 @@
                 [
                     "move", 
                     {
-                        "by": "stops", 
-                        "word_begin": true, 
-                        "forward": true
+                        "forward": false, 
+                        "word_end": true, 
+                        "by": "stops"
                     }
                 ], 
                 [
@@ -289,63 +275,91 @@
                     }
                 ]
             ]
-        }, 
+        }
+    }, 
+    {
         "keys": [
             "ctrl+right"
-        ]
-    }, 
-    {
+        ], 
         "context": [
             {
+                "operator": "equal", 
                 "key": "selection_empty", 
-                "operand": false, 
-                "operator": "equal"
+                "operand": false
             }
         ], 
-        "command": "transform_words", 
+        "command": "chain", 
+        "args": {
+            "commands": [
+                [
+                    "move", 
+                    {
+                        "word_begin": true, 
+                        "forward": true, 
+                        "by": "stops"
+                    }
+                ], 
+                [
+                    "expand_selection", 
+                    {
+                        "to": "word"
+                    }
+                ]
+            ]
+        }
+    }, 
+    {
         "keys": [
             "ctrl+shift+k"
-        ]
-    }, 
-    {
-        "command": "better_expand_selection_to_scope", 
-        "keys": [
-            "ctrl+f7"
-        ]
-    }, 
-    {
+        ], 
         "context": [
             {
-                "key": "selector", 
-                "match_all": true, 
-                "operand": "source.js, source.cfml.script", 
-                "operator": "equal"
-            }, 
-            {
+                "operator": "equal", 
                 "key": "selection_empty", 
+                "operand": false
+            }
+        ], 
+        "command": "transform_words"
+    }, 
+    {
+        "keys": [
+            "ctrl+f7"
+        ], 
+        "command": "better_expand_selection_to_scope"
+    }, 
+    {
+        "keys": [
+            "tab"
+        ], 
+        "context": [
+            {
                 "match_all": true, 
-                "operand": false, 
-                "operator": "equal"
+                "operator": "equal", 
+                "key": "selector", 
+                "operand": "source.js, source.cfml.script"
             }, 
             {
+                "match_all": true, 
+                "operator": "equal", 
+                "key": "selection_empty", 
+                "operand": false
+            }, 
+            {
+                "match_all": true, 
+                "operator": "regex_contains", 
                 "key": "preceding_text", 
-                "match_all": true, 
-                "operand": "function\\s*([\\w$]+\\s*)?\\([^)]*\\)\\s*[{]$", 
-                "operator": "regex_contains"
+                "operand": "function\\s*([\\w$]+\\s*)?\\([^)]*\\)\\s*[{]$"
             }, 
             {
-                "key": "following_text", 
                 "match_all": true, 
-                "operand": "^\\}$", 
-                "operator": "regex_contains"
+                "operator": "regex_contains", 
+                "key": "following_text", 
+                "operand": "^\\}$"
             }
         ], 
         "command": "insert_snippet", 
         "args": {
             "contents": " return $0; "
-        }, 
-        "keys": [
-            "tab"
-        ]
+        }
     }
 ]
