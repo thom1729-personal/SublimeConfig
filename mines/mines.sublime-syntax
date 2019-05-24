@@ -1,0 +1,10 @@
+%YAML 1.2
+---
+scope: source.mines
+hidden: true
+contexts:
+  main:
+    - match: \[
+      scope: punctuation.separator
+    - match: \]
+      scope: punctuation.separator
