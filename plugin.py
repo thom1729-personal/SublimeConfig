@@ -5,3 +5,4 @@ from .src.exchange_with_clipboard import ExchangeWithClipboardCommand
 from .src.increment import IncrementCommand
 from .src.recase_selection import RecaseSelectionCommand, TransformWordsCommand
 from .src.status_message import StatusMessageCommand
+from .src.reveal_in_file_manager import RevealInFileManagerCommand

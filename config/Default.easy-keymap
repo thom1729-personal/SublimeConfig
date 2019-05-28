@@ -7,10 +7,7 @@
   command: prompt_open_folder
 
 - keys: super+shift+e
-  command:
-    open_dir:
-      dir: $file_path
-      file: $file_name
+  command: reveal_in_file_manager
 
 - keys: alt+shift+e
   command: reveal_in_sidebar
