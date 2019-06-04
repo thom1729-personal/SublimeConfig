@@ -10,7 +10,7 @@
   command: reveal_in_file_manager
 
 - keys: alt+shift+e
-  command: reveal_in_sidebar
+  command: reveal_in_side_bar
 
 - keys: f5
   command:
