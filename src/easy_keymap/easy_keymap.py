@@ -8,17 +8,16 @@ from pathlib import Path
 import json
 from textwrap import dedent
 
+from .easy_to_keymap import easy_to_keymap
+from .keymap_to_easy import keymap_to_easy
+
 
 FILE_EXTENSION = '.easy-keymap'
+
 
 def change_extension(file_name, new_extension):
     path = Path(file_name)
     return str(path.with_name(path.stem + new_extension))
-
-
-from .easy_to_keymap import easy_to_keymap
-from .keymap_to_easy import keymap_to_easy
-
 
 
 class CompileKeymapCommand(sublime_plugin.TextCommand):

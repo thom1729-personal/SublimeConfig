@@ -1,73 +1,73 @@
-from io import StringIO
+import ruamel.yaml
+from ruamel.yaml.dumper import RoundTripDumper
+from ruamel.yaml.comments import CommentedMap, CommentedSeq
 
 import re
 
-import ruamel.yaml
-from ruamel.yaml.comments import CommentedMap, CommentedSeq
+
+CONDITION_EXPR = re.compile(r"""
+    (?:(?P<quantifier>all)\s+)?
+    (?P<key>\w+)
+    \s+(?P<operator>\w+)
+    \s+(?P<operand>
+        '(?:[^']|'')*'
+        |"(?:[^"\\]|\\.)*"
+        |\S+
+    )
+""", re.X)
 
 
-KEY_ORDER = ['keys', 'command', 'args', 'context']
-CONTEXT_KEY_ORDER = ['key', 'operator', 'operand', 'match_all']
-
-def yaml_dumps(value):
-    sio = StringIO()
-    ruamel.yaml.round_trip_dump(value, sio)
-    return re.sub(r'\n\.\.\.\n$', '', sio.getvalue())
-
-
-def sort_dict(d, keys):
-    ret = CommentedMap()
-    for key in sorted(d, key=keys.index):
-        ret[key] = d[key]
-    return ret
-
-
-def keymap_to_easy(keymap):
+def easy_to_keymap(easy):
     def get_condition(condition):
-        quantifier_string = 'all ' if condition.get('match_all', False) else ''
-        return "{quantifier}{key} {operator} {operand}".format(
-            quantifier=quantifier_string,
-            key=condition['key'],
-            operator=condition['operator'],
-            operand=yaml_dumps(condition['operand']),
-        )
+        if isinstance(condition, str):
+            match = CONDITION_EXPR.match(condition)
+
+            ret = {
+                'key': match.group('key'),
+                'operator': match.group('operator'),
+                'operand': ruamel.yaml.safe_load(match.group('operand')),
+            }
+
+            if match.group('quantifier'):
+                ret['match_all'] = True
+
+            return ret
+        else:
+            return condition
+
+    def get_command(command):
+        if isinstance(command, dict):
+            commands = list(command.items())
+
+            if len(commands) == 1:
+                name, args = commands[0]
+                return ( name, args )
+        else:
+            return ( command, None )
 
     def get_entry(entry):
-        ret = {}
+        ret = entry.copy()
 
-        if len(entry['keys']) == 1:
-            ret['keys'] = entry['keys'][0]
-        else:
-            ret['keys'] = entry['keys']
+        if isinstance(ret['keys'], str):
+            ret['keys'] = [ ret['keys'] ]
 
-        if 'args' in entry:
-            if entry['command'] == 'chain':
-                ret['command'] = [
-                    cmd[0] if len(cmd) == 1
-                    else {
-                        cmd[0]: cmd[1]
-                    }
-                    for cmd in entry['args']['commands']
+        if isinstance(ret['command'], list):
+            ret['args'] = {
+                'commands': [
+                    [ command, args ]
+                    for command, args in map(get_command, ret['command'])
                 ]
-            else:
-                ret['command'] = {
-                    entry['command']: entry['args']
-                }
+            }
+            ret['command'] = 'chain'
         else:
-            ret['command'] = entry['command']
+            command, args = get_command(ret['command'])
+            ret['command'] = command
+            if args is not None:
+                ret['args'] = args
 
-        if 'context' in entry:
-            ret['context'] = [
-                get_condition(condition)
-                for condition in entry['context']
-            ]
+        if 'context' in ret:
+            ret['context'] = list(map(get_condition, ret['context']))
 
-        return sort_dict(ret, KEY_ORDER)
+        return ret
 
-    ret = CommentedSeq()
-    for i, entry in enumerate(keymap):
-        ret.append(get_entry(entry))
-        if i > 0:
-            ret.yaml_set_comment_before_after_key(i, before='\n\n')
-
-    return ret
+    return list(map(get_entry, easy))
