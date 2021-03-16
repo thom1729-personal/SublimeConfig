@@ -28,4 +28,15 @@
     "close_windows_when_empty": false,
     "find_selected_text": true,
     "scroll_past_end": true,
+
+    "binary_file_patterns": [
+        "*.jpg", "*.jpeg", "*.png", "*.gif", "*.ttf", "*.tga", "*.dds", 
+        "*.ico", "*.eot", "*.pdf", "*.swf", "*.jar", "*.zip",  
+        "node_modules/", "coverage/", "tmp/cache/",
+    ],
+
+    "folder_exclude_patterns": [
+        ".svn", ".git", ".hg", "CVS", ".Trash", ".Trash-*",
+        ".tox", ".mypy_cache", "__pycache__",
+    ],
 }

@@ -6,3 +6,4 @@ from .src.increment import IncrementCommand
 from .src.recase_selection import RecaseSelectionCommand, TransformWordsCommand
 from .src.status_message import StatusMessageCommand
 from .src.reveal_in_file_manager import RevealInFileManagerCommand
+from .src.open_current_directory_in_terminal import OpenCurrentDirectoryInTerminalCommand

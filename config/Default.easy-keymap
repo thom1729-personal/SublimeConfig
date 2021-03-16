@@ -9,6 +9,9 @@
 - keys: super+shift+e
   command: reveal_in_file_manager
 
+- keys: super+alt+t
+  command: open_current_directory_in_terminal
+
 - keys: alt+shift+e
   command: reveal_in_side_bar
 
