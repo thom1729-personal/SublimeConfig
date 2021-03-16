@@ -45,7 +45,7 @@ class CreateEasyKeymapCommand(sublime_plugin.TextCommand):
             yaml.Dumper = RoundTripDumper
             yaml.indent(mapping=2, sequence=4, offset=2)
             yaml.dump(value, outfile, transform=dedent)
-        
+
 
 class SaveKeymapListener(sublime_plugin.EventListener):
     def on_post_save_async(self, view):

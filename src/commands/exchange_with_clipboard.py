@@ -1,4 +1,6 @@
-import sublime, sublime_plugin
+import sublime
+import sublime_plugin
+
 
 class ExchangeWithClipboardCommand(sublime_plugin.TextCommand):
     def run(self, edit):

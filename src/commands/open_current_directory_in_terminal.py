@@ -5,13 +5,15 @@ import subprocess
 from .path_utils import path_for_view
 
 
+SCRIPT_PATH = 'Packages/SublimeConfig/src/commands/open_current_directory_in_terminal.applescript'
+
+
 def osascript(
     *,
     script,
-    args = []
+    args=[]
 ):
-    cmd = [ 'osascript', '-' ] + args
-    print(cmd)
+    cmd = ['osascript', '-'] + args
     proc = subprocess.Popen(
         cmd,
         stdin=subprocess.PIPE,
@@ -24,8 +26,7 @@ def osascript(
 class OpenCurrentDirectoryInTerminalCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         directory, filename = path_for_view(self.view)
-        
-        script = sublime.load_binary_resource('Packages/SublimeConfig/src/commands/open_current_directory_in_terminal.applescript')
 
-        result = osascript(script=script, args=[directory])
-        print(result)
+        script = sublime.load_binary_resource(SCRIPT_PATH)
+
+        osascript(script=script, args=[directory])

@@ -1,7 +1,7 @@
-import sublime
 import sublime_plugin
 
 import re
+
 
 class BetterExpandSelectionToScopeCommand(sublime_plugin.TextCommand):
     def split_scope(self, pos):
@@ -21,7 +21,8 @@ class BetterExpandSelectionToScopeCommand(sublime_plugin.TextCommand):
         selection = self.view.sel()
         for region in selection:
             expanded = self.get_expanded(region)
-            if expanded: selection.add(expanded)
+            if expanded:
+                selection.add(expanded)
 
     def get_expanded(self, inner):
         target = self.split_scope(inner.begin())

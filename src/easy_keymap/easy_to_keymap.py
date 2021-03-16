@@ -1,5 +1,4 @@
 import ruamel.yaml
-from ruamel.yaml.dumper import RoundTripDumper
 
 from collections import OrderedDict
 
@@ -42,16 +41,16 @@ def get_command(command):
 
         if len(commands) == 1:
             name, args = commands[0]
-            return ( name, args )
+            return (name, args)
     else:
-        return ( command, None )
+        return (command, None)
 
 
 def get_entry(entry):
     ret = OrderedDict()
 
     if isinstance(entry['keys'], str):
-        ret['keys'] = [ entry['keys'] ]
+        ret['keys'] = [entry['keys']]
     else:
         ret['keys'] = entry['keys']
 
@@ -59,7 +58,7 @@ def get_entry(entry):
         ret['command'] = 'chain'
         ret['args'] = {
             'commands': [
-                [ command, args ]
+                [command, args]
                 for command, args in map(get_command, entry['command'])
             ]
         }
