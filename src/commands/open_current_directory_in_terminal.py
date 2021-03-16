@@ -25,7 +25,7 @@ class OpenCurrentDirectoryInTerminalCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         directory, filename = path_for_view(self.view)
         
-        script = sublime.load_binary_resource('Packages/SublimeConfig/src/open_current_directory_in_terminal.applescript')
+        script = sublime.load_binary_resource('Packages/SublimeConfig/src/commands/open_current_directory_in_terminal.applescript')
 
         result = osascript(script=script, args=[directory])
         print(result)
