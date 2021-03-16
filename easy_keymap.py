@@ -54,7 +54,7 @@ def easy_to_keymap(easy):
             ret = {
                 'key': match.group('key'),
                 'operator': match.group('operator'),
-                'operand': ruamel.yaml.load(match.group('operand')),
+                'operand': ruamel.yaml.safe_load(match.group('operand')),
             }
 
             if match.group('quantifier'):
@@ -160,7 +160,7 @@ class CompileKeymapCommand(sublime_plugin.TextCommand):
 
         new_path = change_extension(self.view.file_name(), '.sublime-keymap')
         with open(new_path, 'w+') as outfile:
-            json.dump(value, outfile, indent=4)
+            json.dump(value, outfile, indent=4, separators=(',', ':'))
 
 
 class CreateEasyKeymapCommand(sublime_plugin.TextCommand):
