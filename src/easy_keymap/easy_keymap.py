@@ -28,7 +28,7 @@ class CompileKeymapCommand(sublime_plugin.TextCommand):
 
         new_path = change_extension(self.view.file_name(), '.sublime-keymap')
         with open(new_path, 'w+') as outfile:
-            json.dump(value, outfile, indent=4, separators=(',', ':'))
+            json.dump(value, outfile, indent=4, separators=(',', ': '))
 
         print("Compiled to {}.".format(new_path))
 
