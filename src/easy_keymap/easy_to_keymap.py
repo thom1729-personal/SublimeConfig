@@ -1,6 +1,5 @@
 import ruamel.yaml
 from ruamel.yaml.dumper import RoundTripDumper
-from ruamel.yaml.comments import CommentedMap, CommentedSeq
 
 from collections import OrderedDict
 
