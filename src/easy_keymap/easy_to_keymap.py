@@ -2,6 +2,8 @@ import ruamel.yaml
 from ruamel.yaml.dumper import RoundTripDumper
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
 
+from collections import OrderedDict
+
 import re
 
 
@@ -21,11 +23,11 @@ def get_condition(condition):
     if isinstance(condition, str):
         match = CONDITION_EXPR.match(condition)
 
-        ret = {
-            'key': match.group('key'),
-            'operator': match.group('operator'),
-            'operand': ruamel.yaml.safe_load(match.group('operand')),
-        }
+        ret = OrderedDict([
+            ('key', match.group('key')),
+            ('operator', match.group('operator')),
+            ('operand', ruamel.yaml.safe_load(match.group('operand'))),
+        ])
 
         if match.group('quantifier'):
             ret['match_all'] = True
@@ -47,7 +49,7 @@ def get_command(command):
 
 
 def get_entry(entry):
-    ret = {}
+    ret = OrderedDict()
 
     if isinstance(entry['keys'], str):
         ret['keys'] = [ entry['keys'] ]
