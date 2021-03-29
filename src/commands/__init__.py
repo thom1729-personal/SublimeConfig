@@ -7,3 +7,5 @@ from .recase_selection import RecaseSelectionCommand, TransformWordsCommand
 from .status_message import StatusMessageCommand
 from .reveal_in_file_manager import RevealInFileManagerCommand
 from .open_current_directory_in_terminal import OpenCurrentDirectoryInTerminalCommand
+
+from .tab_size_listener import TabSizeListener, ResizeExistingTabsCommand
