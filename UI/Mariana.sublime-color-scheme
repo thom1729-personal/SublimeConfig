@@ -18,5 +18,9 @@
             "scope": "meta.mapping.key, meta.mapping.key string - punctuation",
             "foreground": "var(blue5)"
         },
+        {
+            "scope": "punctuation.section.sequence, punctuation.section.mapping",
+            "foreground": "var(blue5)"
+        },
     ]
 }
