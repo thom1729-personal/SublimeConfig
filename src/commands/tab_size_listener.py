@@ -1,7 +1,8 @@
 import sublime
 import sublime_plugin
 
-from .view_settings_listener import ViewSettingsListener, on_setting_changed
+# from .view_settings_listener import ViewSettingsListener, on_setting_changed
+from sublime_lib import ViewSettingsListener, on_setting_changed
 
 
 __all__ = ('ResizeExistingTabsCommand', 'TabSizeListener')
@@ -31,6 +32,11 @@ class ResizeExistingTabsCommand(sublime_plugin.TextCommand):
 
 
 class TabSizeListener(ViewSettingsListener):
+    _loaded = False
+
+    def on_load(self):
+        self._loaded = True
+
     @classmethod
     def is_applicable(cls, settings: sublime.Settings) -> bool:
         return settings.get('translate_tabs_to_spaces', False)
@@ -41,6 +47,7 @@ class TabSizeListener(ViewSettingsListener):
 
     @on_setting_changed('tab_size')
     def tab_size_changed(self, new_value: object, old_value: object) -> None:
+        if not self._loaded: return
         self.view.run_command('resize_existing_tabs', {
             'new_size': new_value,
             'old_size': old_value,
