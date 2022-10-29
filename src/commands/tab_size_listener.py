@@ -34,9 +34,6 @@ class ResizeExistingTabsCommand(sublime_plugin.TextCommand):
 class TabSizeListener(ViewSettingsListener):
     _loaded = False
 
-    def on_load(self):
-        self._loaded = True
-
     @classmethod
     def is_applicable(cls, settings: sublime.Settings) -> bool:
         return settings.get('translate_tabs_to_spaces', False)
@@ -44,6 +41,9 @@ class TabSizeListener(ViewSettingsListener):
     @classmethod
     def applies_to_primary_view_only(cls) -> bool:
         return True
+
+    def on_load(self) -> None:
+        self._loaded = True
 
     @on_setting_changed('tab_size')
     def tab_size_changed(self, new_value: object, old_value: object) -> None:
