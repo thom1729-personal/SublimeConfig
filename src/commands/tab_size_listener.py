@@ -1,8 +1,7 @@
 import sublime
 import sublime_plugin
 
-# from .view_settings_listener import ViewSettingsListener, on_setting_changed
-from sublime_lib import ViewSettingsListener, on_setting_changed
+from .settings_listener import ViewSettingsListener, on_setting_changed
 
 
 __all__ = ('ResizeExistingTabsCommand', 'TabSizeListener')
